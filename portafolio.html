@@ -1,0 +1,786 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Richard Torres - Desarrollador Web en Cartagena de Indias</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg: #0f1419;
+      --panel: #1a2129;
+      --accent: #3b82f6;
+      --accent-light: #60a5fa;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --card-bg: rgba(30, 41, 59, 0.5);
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background: linear-gradient(135deg, var(--bg) 0%, #1e293b 100%);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    section {
+      padding: 100px 0;
+    }
+    
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 42px;
+      margin-bottom: 20px;
+      text-align: center;
+      background: linear-gradient(to right, #fff, var(--accent-light));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+    
+    .section-subtitle {
+      text-align: center;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto 50px;
+      font-size: 18px;
+    }
+    
+    /* Header/Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(15, 20, 25, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+    
+    .logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      color: var(--text);
+    }
+    
+    .logo span {
+      color: var(--accent);
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+    
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+    
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--text);
+    }
+    
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--accent);
+    }
+    
+    /* Hero Section */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+    }
+    
+    .hero-content {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+    }
+    
+    .hero-text {
+      flex: 1;
+    }
+    
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .photo {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .photo img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 52px;
+      line-height: 1.1;
+      margin-bottom: 10px;
+      font-weight: 700;
+      background: linear-gradient(to right, #fff, var(--accent-light));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .role {
+      color: var(--accent);
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+    }
+    
+    p.lead {
+      color: var(--muted);
+      max-width: 500px;
+      line-height: 1.7;
+      margin-bottom: 30px;
+      font-size: 16px;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent), #1d4ed8);
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px rgba(59, 130, 246, 0.4);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--accent);
+      margin-left: 15px;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 16px;
+      margin-top: 30px;
+    }
+    
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--muted);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      background: var(--accent);
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    /* About Section */
+    #about {
+      background: rgba(15, 20, 25, 0.5);
+    }
+    
+    .about-content {
+      display: flex;
+      gap: 50px;
+      align-items: center;
+    }
+    
+    .about-text {
+      flex: 1;
+    }
+    
+    .about-stats {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    
+    .stat {
+      background: var(--card-bg);
+      padding: 25px;
+      border-radius: 10px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .stat i {
+      font-size: 36px;
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+    
+    .stat h4 {
+      font-size: 32px;
+      margin-bottom: 5px;
+    }
+    
+    /* Services Section */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    .service-card {
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: transform 0.3s ease;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .service-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(59, 130, 246, 0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    
+    .service-icon i {
+      font-size: 24px;
+      color: var(--accent);
+    }
+    
+    /* Projects Section */
+    #projects {
+      background: rgba(15, 20, 25, 0.5);
+    }
+    
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    .project-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .project-image {
+      height: 200px;
+      background: linear-gradient(135deg, #3b82f6, #1e40af);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .project-image i {
+      font-size: 48px;
+      color: white;
+    }
+    
+    .project-content {
+      padding: 20px;
+    }
+    
+    .project-tags {
+      display: flex;
+      gap: 10px;
+      margin: 15px 0;
+      flex-wrap: wrap;
+    }
+    
+    .tag {
+      background: rgba(59, 130, 246, 0.1);
+      color: var(--accent);
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+    }
+    
+    /* Contact Section */
+    .contact-content {
+      display: flex;
+      gap: 50px;
+    }
+    
+    .contact-info {
+      flex: 1;
+    }
+    
+    .contact-form {
+      flex: 1;
+    }
+    
+    .contact-method {
+      display: flex;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+    
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background: rgba(59, 130, 246, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+    }
+    
+    .contact-icon i {
+      color: var(--accent);
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    input, textarea {
+      width: 100%;
+      padding: 12px 15px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+    }
+    
+    textarea {
+      height: 120px;
+      resize: vertical;
+    }
+    
+    /* Footer */
+    footer {
+      background: rgba(15, 20, 25, 0.9);
+      padding: 40px 0;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    /* Responsive */
+    @media (max-width: 968px) {
+      .hero-content, .about-content, .contact-content {
+        flex-direction: column;
+      }
+      
+      .hero-image {
+        order: -1;
+        margin-bottom: 30px;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 36px;
+      }
+      
+      h2 {
+        font-size: 32px;
+      }
+      
+      section {
+        padding: 70px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">Richard<span>Torres</span></div>
+        <div class="nav-links">
+          <a href="#hero" class="active">Inicio</a>
+          <a href="#about">Sobre Mí</a>
+          <a href="#services">Servicios</a>
+          <a href="#projects">Proyectos</a>
+          <a href="#contact">Contacto</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>RICHARD TORRES</h1>
+          <div class="role">Desarrollador Web</div>
+          <p class="lead">Especializado en crear experiencias digitales limpias, rápidas y centradas en el usuario. Diseño interfaces claras y construyo sitios que convierten.</p>
+          <div class="buttons">
+            <a href="#projects" class="btn">Ver Proyectos</a>
+            <a href="#contact" class="btn btn-outline">Contactar</a>
+          </div>
+          <div class="social-links">
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="photo">
+            <img src="yo.png" alt="Foto de Richard Torres">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <h2>Sobre Mí</h2>
+      <p class="section-subtitle">Conoce más sobre mi experiencia, habilidades y pasión por el desarrollo web</p>
+      
+      <div class="about-content">
+        <div class="about-text">
+          <p>Soy un desarrollador web apasionado con más de 3 años de experiencia creando soluciones digitales innovadoras. Me especializo en frontend development pero también tengo sólidos conocimientos en backend.</p>
+          <p>Mi enfoque se centra en crear experiencias de usuario excepcionales combinando diseño atractivo con funcionalidad robusta. Creo que la tecnología debe servir para resolver problemas reales y mejorar la vida de las personas.</p>
+          <p>Cuando no estoy codificando, me gusta mantenerme actualizado con las últimas tendencias en desarrollo web, aprender nuevas tecnologías y contribuir a proyectos de código abierto.</p>
+        </div>
+        <div class="about-stats">
+          <div class="stat">
+            <i class="fas fa-code"></i>
+            <h4>50+</h4>
+            <p>Proyectos Completados</p>
+          </div>
+          <div class="stat">
+            <i class="fas fa-users"></i>
+            <h4>30+</h4>
+            <p>Clientes Satisfechos</p>
+          </div>
+          <div class="stat">
+            <i class="fas fa-clock"></i>
+            <h4>3+</h4>
+            <p>Años de Experiencia</p>
+          </div>
+          <div class="stat">
+            <i class="fas fa-certificate"></i>
+            <h4>15+</h4>
+            <p>Certificaciones</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services">
+    <div class="container">
+      <h2>Mis Servicios</h2>
+      <p class="section-subtitle">Soluciones digitales personalizadas para hacer crecer tu negocio en línea</p>
+      
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <h3>Desarrollo Web</h3>
+          <p>Creación de sitios web modernos, responsivos y optimizados para todos los dispositivos utilizando las últimas tecnologías.</p>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h3>Apps Móviles</h3>
+          <p>Desarrollo de aplicaciones móviles nativas e híbridas para iOS y Android con interfaces intuitivas y funcionales.</p>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-shopping-cart"></i>
+          </div>
+          <h3>E-commerce</h3>
+          <p>Tiendas online completas con carritos de compra, pasarelas de pago y sistemas de gestión de inventario.</p>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-search"></i>
+          </div>
+          <h3>SEO</h3>
+          <p>Optimización para motores de búsqueda para mejorar el posicionamiento y visibilidad de tu sitio web.</p>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-palette"></i>
+          </div>
+          <h3>Diseño UI/UX</h3>
+          <p>Diseño de interfaces atractivas y experiencias de usuario intuitivas que convierten visitantes en clientes.</p>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-tools"></i>
+          </div>
+          <h3>Mantenimiento</h3>
+          <p>Soporte técnico continuo, actualizaciones de seguridad y mejoras para mantener tu sitio funcionando perfectamente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="container">
+      <h2>Mis Proyectos</h2>
+      <p class="section-subtitle">Algunos de mis trabajos recientes donde he aplicado mis habilidades y creatividad</p>
+      
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-image">
+            <i class="fas fa-shopping-bag"></i>
+          </div>
+          <div class="project-content">
+            <h3>Tienda Online Moda</h3>
+            <p>E-commerce completo para marca de ropa con catálogo, carrito y pasarela de pago integrada.</p>
+            <div class="project-tags">
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">MongoDB</span>
+            </div>
+            <a href="#" class="btn">Ver Detalles</a>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-image">
+            <i class="fas fa-utensils"></i>
+          </div>
+          <div class="project-content">
+            <h3>App Delivery Comida</h3>
+            <p>Aplicación móvil para pedidos de comida con geolocalización y seguimiento en tiempo real.</p>
+            <div class="project-tags">
+              <span class="tag">React Native</span>
+              <span class="tag">Firebase</span>
+              <span class="tag">Google Maps API</span>
+            </div>
+            <a href="#" class="btn">Ver Detalles</a>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-image">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <div class="project-content">
+            <h3>Dashboard Analytics</h3>
+            <p>Panel de control para visualización de datos empresariales con gráficos interactivos y reportes.</p>
+            <div class="project-tags">
+              <span class="tag">Vue.js</span>
+              <span class="tag">D3.js</span>
+              <span class="tag">Python</span>
+            </div>
+            <a href="#" class="btn">Ver Detalles</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <h2>Contacto</h2>
+      <p class="section-subtitle">¿Tienes un proyecto en mente? Hablemos y hagámoslo realidad</p>
+      
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-method">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div>
+              <h3>Email</h3>
+              <p>richard@ejemplo.com</p>
+            </div>
+          </div>
+          
+          <div class="contact-method">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div>
+              <h3>Teléfono</h3>
+              <p>+1 (555) 123-4567</p>
+            </div>
+          </div>
+          
+          <div class="contact-method">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div>
+              <h3>Ubicación</h3>
+              <p>Ciudad, País</p>
+            </div>
+          </div>
+          
+          <div class="social-links">
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        
+        <div class="contact-form">
+          <form>
+            <div class="form-group">
+              <input type="text" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-group">
+              <input type="email" placeholder="Tu email" required>
+            </div>
+            <div class="form-group">
+              <input type="text" placeholder="Asunto">
+            </div>
+            <div class="form-group">
+              <textarea placeholder="Tu mensaje" required></textarea>
+            </div>
+            <button type="submit" class="btn">Enviar Mensaje</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="logo">Richard<span>Torres</span></div>
+        <p>Desarrollador Web - Creando experiencias digitales excepcionales</p>
+        <p>&copy; 2023 Richard Torres. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navegación suave
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Cambiar navegación activa al hacer scroll
+    window.addEventListener('scroll', () => {
+      let current = '';
+      const sections = document.querySelectorAll('section');
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= (sectionTop - 200)) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

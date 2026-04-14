@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Richard Torres - Desarrollador PHP & MySQL | Portafolio</title>
-  <meta name="description" content="Portafolio de Richard Torres, desarrollador backend junior especializado en PHP, MySQL y sistemas empresariales.">
+  <title>Richard Torres - Desarrollador Laravel & PHP | Portafolio Profesional</title>
+  <meta name="description" content="Portafolio de Richard Torres, desarrollador backend especializado en Laravel, PHP, MySQL y Python. Proyectos de inventario, PQRS, control de acceso, recall multinivel y reconocimiento facial.">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -16,6 +16,8 @@
       --text: #f8fafc;
       --muted: #94a3b8;
       --card-bg: rgba(30, 41, 59, 0.5);
+      --laravel: #ff2d20;
+      --python: #3776ab;
     }
     
     * {
@@ -77,7 +79,7 @@
       left: 0;
       width: 100%;
       z-index: 1000;
-      background: rgba(15, 20, 25, 0.9);
+      background: rgba(15, 20, 25, 0.95);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
@@ -152,11 +154,11 @@
     
     .photo {
       width: 100%;
-      max-width: 400px;
-      border-radius: 12px;
+      max-width: 350px;
+      border-radius: 50%;
       overflow: hidden;
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 3px solid var(--accent);
     }
     
     .photo img {
@@ -257,6 +259,11 @@
       flex: 1;
     }
     
+    .about-text p {
+      margin-bottom: 20px;
+      color: var(--muted);
+    }
+    
     .about-stats {
       flex: 1;
       display: grid;
@@ -270,12 +277,28 @@
       border-radius: 10px;
       text-align: center;
       border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: transform 0.3s ease;
+    }
+    
+    .stat:hover {
+      transform: translateY(-5px);
     }
     
     .stat i {
       font-size: 36px;
-      color: var(--accent);
       margin-bottom: 15px;
+    }
+    
+    .stat i.fa-laravel {
+      color: #ff2d20;
+    }
+    
+    .stat i.fa-python {
+      color: #3776ab;
+    }
+    
+    .stat i.fa-code {
+      color: var(--accent);
     }
     
     .stat h4 {
@@ -313,8 +336,16 @@
     }
     
     .service-icon i {
-      font-size: 24px;
+      font-size: 28px;
       color: var(--accent);
+    }
+    
+    .service-icon i.fa-laravel {
+      color: #ff2d20;
+    }
+    
+    .service-icon i.fa-python {
+      color: #3776ab;
     }
     
     #projects {
@@ -323,7 +354,7 @@
     
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 30px;
     }
     
@@ -361,6 +392,17 @@
     
     .project-content {
       padding: 20px;
+    }
+    
+    .project-content h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    
+    .project-content p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
     }
     
     .project-tags {
@@ -410,6 +452,7 @@
     
     .contact-icon i {
       color: var(--accent);
+      font-size: 20px;
     }
     
     .form-group {
@@ -424,6 +467,11 @@
       border-radius: 8px;
       color: var(--text);
       font-family: 'Inter', sans-serif;
+    }
+    
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent);
     }
     
     textarea {
@@ -442,6 +490,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      gap: 15px;
     }
     
     @media (max-width: 968px) {
@@ -471,6 +520,10 @@
       section {
         padding: 70px 0;
       }
+      
+      .about-stats {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -495,8 +548,8 @@
       <div class="hero-content">
         <div class="hero-text">
           <h1>RICHARD TORRES</h1>
-          <div class="role">Desarrollador Backend Junior | PHP & MySQL</div>
-          <p class="lead">Especializado en desarrollo de aplicaciones web empresariales, sistemas de inventario, control de acceso y gestión de PQRS con PHP y MySQL.</p>
+          <div class="role">Desarrollador Laravel & PHP | Backend Junior</div>
+          <p class="lead">Especializado en desarrollo de aplicaciones web con Laravel, PHP y MySQL. Experiencia en sistemas de inventario, control de acceso, recall multinivel y reconocimiento facial con Python.</p>
           <div class="buttons">
             <a href="#projects" class="btn">Ver Proyectos</a>
             <a href="#contact" class="btn btn-outline">Contactar</a>
@@ -519,34 +572,34 @@
   <section id="about">
     <div class="container">
       <h2>Sobre Mí</h2>
-      <p class="section-subtitle">Técnico en Sistemas con experiencia en desarrollo backend y soporte TI</p>
+      <p class="section-subtitle">Técnico en Sistemas con experiencia desde 2023 en desarrollo web y aplicaciones empresariales</p>
       
       <div class="about-content">
         <div class="about-text">
-          <p>Soy Técnico y Tecnólogo en Sistemas con experiencia en desarrollo de aplicaciones web con PHP y MySQL. Actualmente trabajo como Soporte TI y Desarrollador de Aplicaciones Junior en Progan Group, donde desarrollo sistemas internos, automatizo procesos y brindo soporte técnico a usuarios.</p>
-          <p>Mi enfoque está en crear soluciones prácticas para problemas reales: sistemas de inventario, control de acceso, gestión de PQRS y automatización de procesos administrativos. Me apasiona escribir código limpio y funcional que realmente ayude a las empresas a ser más eficientes.</p>
-          <p>Estoy en constante aprendizaje, actualmente fortaleciendo mis conocimientos en Laravel, APIs REST y Git para seguir creciendo como desarrollador backend.</p>
+          <p>Soy Técnico y Tecnólogo en Sistemas con experiencia desde <strong>2023</strong> en desarrollo de aplicaciones web. He trabajado en proyectos personales y colaborativos, incluyendo sistemas para negocios, amigos y emprendedores.</p>
+          <p>Mi stack principal es <strong>Laravel y PHP con MySQL</strong>. He desarrollado sistemas de inventario, control de acceso, gestión de PQRS y un <strong>sistema de recall multinivel</strong> completo. También tengo experiencia colaborativa en <strong>Python para reconocimiento facial</strong> y visión artificial.</p>
+          <p>Actualmente trabajo como Soporte TI y Desarrollador de Aplicaciones Junior en Progan Group, y sigo fortaleciendo mis conocimientos en APIs REST, microservicios y Vue.js para seguir creciendo como desarrollador full stack.</p>
         </div>
         <div class="about-stats">
           <div class="stat">
             <i class="fas fa-code"></i>
-            <h4>5+</h4>
-            <p>Sistemas Desarrollados</p>
+            <h4>10+</h4>
+            <p>Proyectos Completados</p>
           </div>
           <div class="stat">
-            <i class="fas fa-building"></i>
-            <h4>1</h4>
-            <p>Empresa Actual</p>
+            <i class="fab fa-laravel"></i>
+            <h4>Laravel</h4>
+            <p>Framework Principal</p>
           </div>
           <div class="stat">
-            <i class="fas fa-clock"></i>
-            <h4>1+</h4>
-            <p>Año de Experiencia</p>
+            <i class="fas fa-calendar-alt"></i>
+            <h4>2023</h4>
+            <p>Inicio en Desarrollo</p>
           </div>
           <div class="stat">
-            <i class="fas fa-database"></i>
-            <h4>PHP/MySQL</h4>
-            <p>Stack Principal</p>
+            <i class="fab fa-python"></i>
+            <h4>Python</h4>
+            <p>Visión Artificial</p>
           </div>
         </div>
       </div>
@@ -556,15 +609,23 @@
   <section id="services">
     <div class="container">
       <h2>Mis Servicios</h2>
-      <p class="section-subtitle">Lo que puedo hacer por tu empresa o proyecto</p>
+      <p class="section-subtitle">Soluciones que ofrezco para tu empresa o proyecto</p>
       
       <div class="services-grid">
         <div class="service-card">
           <div class="service-icon">
+            <i class="fab fa-laravel"></i>
+          </div>
+          <h3>Laravel</h3>
+          <p>Desarrollo de aplicaciones web con Laravel, sistemas multinivel, autenticación, rutas, migraciones y Eloquent ORM.</p>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
             <i class="fas fa-laptop-code"></i>
           </div>
-          <h3>Desarrollo Web con PHP</h3>
-          <p>Creación de aplicaciones web personalizadas usando PHP y MySQL, desde sistemas simples hasta plataformas empresariales.</p>
+          <h3>PHP & MySQL</h3>
+          <p>Creación de aplicaciones web personalizadas, desde sistemas simples hasta plataformas empresariales complejas.</p>
         </div>
         
         <div class="service-card">
@@ -572,7 +633,7 @@
             <i class="fas fa-boxes"></i>
           </div>
           <h3>Sistemas de Inventario</h3>
-          <p>Desarrollo de sistemas para control de activos, entradas y salidas de productos, con reportes automatizados.</p>
+          <p>Control de activos, entradas y salidas de productos, con reportes automatizados y manejo de usuarios.</p>
         </div>
         
         <div class="service-card">
@@ -585,18 +646,34 @@
         
         <div class="service-card">
           <div class="service-icon">
-            <i class="fas fa-shield-alt"></i>
+            <i class="fas fa-project-diagram"></i>
           </div>
-          <h3>Control de Acceso</h3>
-          <p>Implementación de sistemas de autenticación con manejo de roles y permisos de usuarios.</p>
+          <h3>Recall Multinivel</h3>
+          <p>Sistemas de trazabilidad con estructura multinivel hasta llegar al recall final, ideal para procesos de calidad.</p>
         </div>
         
         <div class="service-card">
           <div class="service-icon">
-            <i class="fas fa-chart-line"></i>
+            <i class="fab fa-python"></i>
           </div>
-          <h3>Reportes en Excel</h3>
-          <p>Automatización de reportes y análisis de datos para la toma de decisiones empresariales.</p>
+          <h3>Python & Visión Artificial</h3>
+          <p>Desarrollo colaborativo de sistemas de reconocimiento facial y automatización con Python.</p>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>Control de Acceso</h3>
+          <p>Implementación de autenticación con manejo de roles y permisos de usuarios.</p>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-globe"></i>
+          </div>
+          <h3>Páginas Web</h3>
+          <p>Desarrollo de sitios web responsivos para negocios y emprendedores.</p>
         </div>
         
         <div class="service-card">
@@ -613,13 +690,13 @@
   <section id="projects">
     <div class="container">
       <h2>Mis Proyectos</h2>
-      <p class="section-subtitle">Aplicaciones desarrolladas en entornos empresariales reales</p>
+      <p class="section-subtitle">Aplicaciones desarrolladas en entornos reales (empresariales, colaborativos y personales)</p>
       
       <div class="projects-grid">
         <!-- Proyecto 1: Sistema de Inventario -->
         <div class="project-card">
           <div class="project-image">
-            <img src="inventario.png" alt="Sistema de Inventario y Control de Activos" onerror="this.parentElement.innerHTML='<i class=\'fas fa-boxes\'></i>'">
+            <img src="inventario.png" alt="Sistema de Inventario" onerror="this.parentElement.innerHTML='<i class=\'fas fa-boxes\'></i>'">
           </div>
           <div class="project-content">
             <h3>Sistema de Inventario y Control de Activos</h3>
@@ -635,7 +712,7 @@
         <!-- Proyecto 2: Sistema de PQRS -->
         <div class="project-card">
           <div class="project-image">
-            <img src="pqrs.png" alt="Sistema de Gestión PQRS" onerror="this.parentElement.innerHTML='<i class=\'fas fa-ticket-alt\'></i>'">
+            <img src="pqrs.png" alt="Sistema PQRS" onerror="this.parentElement.innerHTML='<i class=\'fas fa-ticket-alt\'></i>'">
           </div>
           <div class="project-content">
             <h3>Sistema de Gestión PQRS</h3>
@@ -650,7 +727,7 @@
         <!-- Proyecto 3: Control de Acceso -->
         <div class="project-card">
           <div class="project-image">
-            <img src="login.png" alt="Sistema de Control de Acceso" onerror="this.parentElement.innerHTML='<i class=\'fas fa-lock\'></i>'">
+            <img src="login.png" alt="Control de Acceso" onerror="this.parentElement.innerHTML='<i class=\'fas fa-lock\'></i>'">
           </div>
           <div class="project-content">
             <h3>Sistema de Control de Acceso</h3>
@@ -658,7 +735,55 @@
             <div class="project-tags">
               <span class="tag">PHP</span>
               <span class="tag">MySQL</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Proyecto 4: Sistema Recall Multinivel (LARAVEL) -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="recall.png" alt="Sistema Recall Multinivel" onerror="this.parentElement.innerHTML='<i class=\'fab fa-laravel\' style=\'color:#ff2d20\'></i>'">
+          </div>
+          <div class="project-content">
+            <h3>Sistema Recall Multinivel (Laravel)</h3>
+            <p>Sistema desarrollado en Laravel para gestión de procesos de recall con estructura multinivel, seguimiento de trazabilidad hasta llegar al recall final. Incluye gestión de productos, lotes y notificaciones.</p>
+            <div class="project-tags">
               <span class="tag">Laravel</span>
+              <span class="tag">PHP</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">Multinivel</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Proyecto 5: Reconocimiento Facial (PYTHON) -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="facial.png" alt="Reconocimiento Facial" onerror="this.parentElement.innerHTML='<i class=\'fab fa-python\' style=\'color:#3776ab\'></i>'">
+          </div>
+          <div class="project-content">
+            <h3>Sistema de Reconocimiento Facial</h3>
+            <p>Desarrollo colaborativo de sistema de reconocimiento facial usando Python, OpenCV y librerías de visión artificial. Integración con aplicaciones web para control de acceso biométrico.</p>
+            <div class="project-tags">
+              <span class="tag">Python</span>
+              <span class="tag">OpenCV</span>
+              <span class="tag">IA / Visión</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Proyecto 6: Páginas Web para Negocios -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="web.png" alt="Páginas Web" onerror="this.parentElement.innerHTML='<i class=\'fas fa-globe\'></i>'">
+          </div>
+          <div class="project-content">
+            <h3>Páginas Web para Negocios</h3>
+            <p>Desde 2023 he desarrollado múltiples sitios web responsivos para amigos y emprendedores, incluyendo landing pages, sitios institucionales y catálogos de productos.</p>
+            <div class="project-tags">
+              <span class="tag">HTML/CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Responsive</span>
             </div>
           </div>
         </div>
@@ -669,7 +794,7 @@
   <section id="contact">
     <div class="container">
       <h2>Contacto</h2>
-      <p class="section-subtitle">¿Interesado en mi perfil? Hablemos</p>
+      <p class="section-subtitle">¿Interesado en mi perfil? Hablemos sobre cómo puedo ayudarte</p>
       
       <div class="contact-content">
         <div class="contact-info">
@@ -712,6 +837,13 @@
               <p>Cartagena, Colombia</p>
             </div>
           </div>
+          
+          <div class="social-links">
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
         </div>
         
         <div class="contact-form">
@@ -726,7 +858,7 @@
               <input type="text" placeholder="Asunto">
             </div>
             <div class="form-group">
-              <textarea placeholder="Tu mensaje" required></textarea>
+              <textarea placeholder="Cuéntame sobre tu proyecto o vacante..." required></textarea>
             </div>
             <button type="submit" class="btn">Enviar Mensaje</button>
           </form>
@@ -739,13 +871,15 @@
     <div class="container">
       <div class="footer-content">
         <div class="logo">Richard<span>Torres</span></div>
-        <p>Desarrollador Backend Junior | PHP & MySQL</p>
+        <p>Desarrollador Laravel & PHP | Backend Junior</p>
+        <p>Cartagena, Colombia | Desde 2023 construyendo soluciones digitales</p>
         <p>&copy; 2025 Richard Torres. Portafolio profesional.</p>
       </div>
     </div>
   </footer>
 
   <script>
+    // Navegación suave
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -756,6 +890,7 @@
       });
     });
 
+    // Cambiar navegación activa al hacer scroll
     window.addEventListener('scroll', () => {
       let current = '';
       const sections = document.querySelectorAll('section');

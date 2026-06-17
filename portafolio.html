@@ -131,25 +131,14 @@
     }
     
     #hero {
-  height: 100vh;                    
-  display: flex;
-  align-items: center;
-  padding-top: 80px;
-  position: sticky;               
-  top: 0;                          
-  overflow: hidden;
-  z-index: 1;                       
-}
-#about, #services, #projects, #contact {
-  position: relative;
-  z-index: 2;                       
-  background: var(--bg);            
-}
-
-/* Opcional: efecto sutil de sombra al pasar */
-#about {
-   background: #0f1419; 
-}
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    
     .hero-content {
       display: flex;
       align-items: center;
@@ -365,7 +354,7 @@
     }
     
     #projects {
-       background: #0f1419;
+      background: rgba(15, 20, 25, 0.5);
     }
     
     .projects-grid {

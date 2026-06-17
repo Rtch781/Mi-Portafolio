@@ -131,14 +131,25 @@
     }
     
     #hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding-top: 80px;
-      position: relative;
-      overflow: hidden;
-    }
-    
+  height: 100vh;                    
+  display: flex;
+  align-items: center;
+  padding-top: 80px;
+  position: sticky;               
+  top: 0;                          
+  overflow: hidden;
+  z-index: 1;                       
+}
+#about, #services, #projects, #contact {
+  position: relative;
+  z-index: 2;                       
+  background: var(--bg);            
+}
+
+/* Opcional: efecto sutil de sombra al pasar */
+#about {
+  box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.5);
+}
     .hero-content {
       display: flex;
       align-items: center;

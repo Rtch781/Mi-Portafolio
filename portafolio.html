@@ -36,6 +36,7 @@
       background: linear-gradient(135deg, var(--bg) 0%, #1e293b 100%);
       line-height: 1.6;
       min-height: 100vh;
+      overflow-x: hidden;
     }
     
     .container {
@@ -134,12 +135,16 @@
       display: flex;
       align-items: center;
       padding-top: 80px;
+      position: relative;
+      overflow: hidden;
     }
     
     .hero-content {
       display: flex;
       align-items: center;
       gap: 50px;
+      position: relative;
+      z-index: 10;
     }
     
     .hero-text {
@@ -493,6 +498,168 @@
       gap: 15px;
     }
     
+    /* ======================================== */
+    /* ===== CAPAS FLOTANTES Y ANIMACIONES ===== */
+    /* ======================================== */
+    
+    .floating-layers {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    .layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .layer-back {
+      z-index: 1;
+    }
+    
+    .layer-mid {
+      z-index: 2;
+    }
+    
+    .layer-front {
+      z-index: 3;
+    }
+    
+    .float-object {
+      position: absolute;
+      font-size: 50px;
+      user-select: none;
+      opacity: 0.7;
+      filter: drop-shadow(0 10px 20px rgba(59, 130, 246, 0.2));
+      animation: float 6s ease-in-out infinite;
+      will-change: transform;
+    }
+    
+    /* Nubes */
+    .cloud {
+      font-size: 0;
+      width: 120px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 50px;
+      filter: blur(8px);
+      animation: floatCloud 20s ease-in-out infinite alternate;
+    }
+    
+    .cloud1 {
+      top: 10%;
+      left: 5%;
+      width: 180px;
+      height: 50px;
+      animation-duration: 25s;
+    }
+    
+    .cloud2 {
+      bottom: 20%;
+      right: 10%;
+      width: 220px;
+      height: 60px;
+      animation-duration: 30s;
+      animation-delay: 3s;
+    }
+    
+    .cloud3 {
+      top: 50%;
+      left: 60%;
+      width: 150px;
+      height: 40px;
+      animation-duration: 22s;
+      animation-delay: 5s;
+    }
+    
+    /* Posiciones objetos */
+    .balloon {
+      top: 15%;
+      left: 8%;
+      font-size: 65px;
+      animation-duration: 7s;
+      animation-delay: 0.5s;
+    }
+    
+    .satellite {
+      bottom: 25%;
+      right: 5%;
+      font-size: 55px;
+      animation-duration: 9s;
+      animation-delay: 1.5s;
+    }
+    
+    .star {
+      top: 60%;
+      left: 3%;
+      font-size: 35px;
+      animation-duration: 5s;
+      animation-delay: 0.2s;
+    }
+    
+    .rocket {
+      bottom: 10%;
+      left: 25%;
+      font-size: 70px;
+      animation-duration: 6s;
+      animation-delay: 0.8s;
+      transform: rotate(-20deg);
+    }
+    
+    .code-icon {
+      top: 20%;
+      right: 8%;
+      font-size: 45px;
+      animation-duration: 8s;
+      animation-delay: 2s;
+    }
+    
+    .gear-icon {
+      top: 40%;
+      right: 20%;
+      font-size: 40px;
+      animation-duration: 10s;
+      animation-delay: 0.3s;
+    }
+    
+    .database-icon {
+      bottom: 40%;
+      left: 45%;
+      font-size: 38px;
+      animation-duration: 7.5s;
+      animation-delay: 1.2s;
+    }
+    
+    /* ===== ANIMACIONES ===== */
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px) rotate(-3deg) scale(1);
+      }
+      50% {
+        transform: translateY(-35px) rotate(3deg) scale(1.05);
+      }
+    }
+    
+    @keyframes floatCloud {
+      0% {
+        transform: translateX(-20px) scale(1);
+      }
+      100% {
+        transform: translateX(40px) scale(1.1);
+      }
+    }
+    
+    /* ===== RESPONSIVE ===== */
+    
     @media (max-width: 968px) {
       .hero-content, .about-content, .contact-content {
         flex-direction: column;
@@ -506,6 +673,19 @@
       .nav-links {
         display: none;
       }
+      
+      .float-object {
+        font-size: 35px !important;
+      }
+      
+      .cloud {
+        width: 80px !important;
+        height: 30px !important;
+      }
+      
+      .balloon { font-size: 45px !important; }
+      .rocket { font-size: 50px !important; }
+      .satellite { font-size: 40px !important; }
     }
     
     @media (max-width: 768px) {
@@ -543,8 +723,36 @@
     </div>
   </header>
 
+  <!-- ========== SECCIÓN HERO CON OBJETOS FLOTANTES ========== -->
   <section id="hero">
     <div class="container">
+      
+      <!-- CAPAS FLOTANTES -->
+      <div class="floating-layers">
+        <!-- Capa fondo: nubes -->
+        <div class="layer layer-back" id="layerBack">
+          <div class="float-object cloud cloud1"></div>
+          <div class="float-object cloud cloud2"></div>
+          <div class="float-object cloud cloud3"></div>
+        </div>
+        
+        <!-- Capa intermedia: objetos -->
+        <div class="layer layer-mid" id="layerMid">
+          <div class="float-object balloon">🎈</div>
+          <div class="float-object satellite">🛰️</div>
+          <div class="float-object star">⭐</div>
+          <div class="float-object database-icon">🗄️</div>
+        </div>
+        
+        <!-- Capa frontal: cohete y código -->
+        <div class="layer layer-front" id="layerFront">
+          <div class="float-object rocket">🚀</div>
+          <div class="float-object code-icon">💻</div>
+          <div class="float-object gear-icon">⚙️</div>
+        </div>
+      </div>
+      
+      <!-- CONTENIDO PRINCIPAL (por encima de las capas) -->
       <div class="hero-content">
         <div class="hero-text">
           <h1>RICHARD TORRES</h1>
@@ -693,7 +901,7 @@
       <p class="section-subtitle">Aplicaciones desarrolladas en entornos reales (empresariales, colaborativos y personales)</p>
       
       <div class="projects-grid">
-        <!-- Proyecto 1: Sistema de Inventario -->
+        <!-- Proyecto 1 -->
         <div class="project-card">
           <div class="project-image">
             <img src="inventario.png" alt="Sistema de Inventario" onerror="this.parentElement.innerHTML='<i class=\'fas fa-boxes\'></i>'">
@@ -709,7 +917,7 @@
           </div>
         </div>
         
-        <!-- Proyecto 2: Sistema de PQRS -->
+        <!-- Proyecto 2 -->
         <div class="project-card">
           <div class="project-image">
             <img src="pqrs.png" alt="Sistema PQRS" onerror="this.parentElement.innerHTML='<i class=\'fas fa-ticket-alt\'></i>'">
@@ -724,7 +932,7 @@
           </div>
         </div>
         
-        <!-- Proyecto 3: Control de Acceso -->
+        <!-- Proyecto 3 -->
         <div class="project-card">
           <div class="project-image">
             <img src="login.png" alt="Control de Acceso" onerror="this.parentElement.innerHTML='<i class=\'fas fa-lock\'></i>'">
@@ -739,7 +947,7 @@
           </div>
         </div>
         
-        <!-- Proyecto 4: Sistema Recall Multinivel (LARAVEL) -->
+        <!-- Proyecto 4 -->
         <div class="project-card">
           <div class="project-image">
             <img src="recall.png" alt="Sistema Recall Multinivel" onerror="this.parentElement.innerHTML='<i class=\'fab fa-laravel\' style=\'color:#ff2d20\'></i>'">
@@ -756,7 +964,7 @@
           </div>
         </div>
         
-        <!-- Proyecto 5: Reconocimiento Facial (PYTHON) -->
+        <!-- Proyecto 5 -->
         <div class="project-card">
           <div class="project-image">
             <img src="facial.png" alt="Reconocimiento Facial" onerror="this.parentElement.innerHTML='<i class=\'fab fa-python\' style=\'color:#3776ab\'></i>'">
@@ -772,7 +980,7 @@
           </div>
         </div>
         
-        <!-- Proyecto 6: Páginas Web para Negocios -->
+        <!-- Proyecto 6 -->
         <div class="project-card">
           <div class="project-image">
             <img src="web.png" alt="Páginas Web" onerror="this.parentElement.innerHTML='<i class=\'fas fa-globe\'></i>'">
@@ -839,10 +1047,9 @@
           </div>
           
           <div class="social-links">
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/richard-torres-89bb45366/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/Rtch781" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://api.whatsapp.com/send/?phone=573023653074&text=Hola%2C+quiero+m%C3%A1s+informaci%C3%B3n&type=phone_number&app_absent=0" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
           </div>
         </div>
         
@@ -879,7 +1086,7 @@
   </footer>
 
   <script>
-    // Navegación suave
+    // ===== NAVEGACIÓN SUAVE =====
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -890,7 +1097,7 @@
       });
     });
 
-    // Cambiar navegación activa al hacer scroll
+    // ===== CAMBIAR NAVEGACIÓN ACTIVA AL SCROLL =====
     window.addEventListener('scroll', () => {
       let current = '';
       const sections = document.querySelectorAll('section');
@@ -908,6 +1115,55 @@
         if (link.getAttribute('href') === `#${current}`) {
           link.classList.add('active');
         }
+      });
+    });
+
+    // ===== EFECTO PARALLAX =====
+    const layerBack = document.getElementById('layerBack');
+    const layerMid = document.getElementById('layerMid');
+    const layerFront = document.getElementById('layerFront');
+
+    const speeds = {
+      layerBack: 0.15,
+      layerMid: 0.4,
+      layerFront: 0.7
+    };
+
+    window.addEventListener('scroll', function() {
+      const scrolled = window.pageYOffset;
+      
+      if (layerBack) {
+        layerBack.style.transform = `translateY(${scrolled * speeds.layerBack}px)`;
+      }
+      if (layerMid) {
+        layerMid.style.transform = `translateY(${scrolled * speeds.layerMid}px)`;
+      }
+      if (layerFront) {
+        layerFront.style.transform = `translateY(${scrolled * speeds.layerFront}px)`;
+      }
+    });
+
+    // ===== SEGUIMIENTO DEL MOUSE =====
+    const hero = document.getElementById('hero');
+
+    hero.addEventListener('mousemove', function(e) {
+      const x = (e.clientX / window.innerWidth - 0.5) * 30;
+      const y = (e.clientY / window.innerHeight - 0.5) * 30;
+      
+      document.querySelectorAll('.layer-mid .float-object').forEach((el, i) => {
+        const speed = 0.3 + (i * 0.1);
+        el.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+      });
+      
+      document.querySelectorAll('.layer-front .float-object').forEach((el, i) => {
+        const speed = 0.5 + (i * 0.15);
+        el.style.transform = `translate(${-x * speed}px, ${-y * speed}px)`;
+      });
+    });
+
+    hero.addEventListener('mouseleave', function() {
+      document.querySelectorAll('.float-object').forEach(el => {
+        el.style.transform = '';
       });
     });
   </script>
